@@ -7,6 +7,24 @@ NuGet Package
 Install-Package Zack.OpenCVSharp.Ext
 ```
 ## ResourceTracker
+In OpenCVSharp, Mat and MatExpr have unmanaged resources, so they should be disposed be code. However, the code is tedious. Worst of all, every operator, like +,-,* and others, will create new objects, and they should by disposed one by one. The tedious code is as follow.
+```csharp
+using (Mat mat1 = new Mat(new Size(100, 100), MatType.CV_8UC3))
+using (Mat mat2 = mat1 * 0.8)
+using (Mat mat3 = 255-mat2)
+{
+	Mat[] mats1 = mat3.Split();
+	using (Mat mat4 = new Mat())
+	{
+		Cv2.Merge(new Mat[] { mats1[0], mats1[1], mats1[2] }, mat4);
+	}
+	foreach(var m in mats1)
+	{
+		m.Dispose();
+	}
+}
+```
+
 The class ResourceTracker is used for managing OpenCV resources, like Mat, MatExpr, etc.
 * T(). The method T() of ResourceTracker is used for add OpenCV objects to the tracking records. After Dispose() of ResourceTracker is called, all the resoruces kept by ResourceTracker will be disposed. The method T() can take one object and an array of objects.
 * NewMat(). The method NewMat() is a combination of T(new Mat(...)) 
