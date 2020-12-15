@@ -1,4 +1,4 @@
-[ÖÐÎÄ°æÎÄµµ(Chinese version)](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/blob/main/README_CN.md)
+[ä¸­æ–‡ç‰ˆæ–‡æ¡£(Chinese version)](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/blob/main/README_CN.md)
 
 # Zack.OpenCVSharp.Ext
 It is an extension library of OpenCvSharp. It provides ResourceTracker, which can facilitate the resources management of Mat and other unmanaged resources. It also provide a class, named np, which is a .NET native and  managed version of Numpy.
