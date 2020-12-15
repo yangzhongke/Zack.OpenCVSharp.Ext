@@ -16,7 +16,8 @@ namespace GreenScreenRemovalDemo
             }
             else if(c.Key>= ConsoleKey.D0&&c.Key<=ConsoleKey.D9)
             {
-                videoCapture = new VideoCapture(0, VideoCaptureAPIs.DSHOW);
+                int cameraIndex = c.Key - ConsoleKey.D0;
+                videoCapture = new VideoCapture(cameraIndex, VideoCaptureAPIs.DSHOW);
             }
             else
             {
@@ -39,7 +40,7 @@ namespace GreenScreenRemovalDemo
                 {
                     if (!videoCapture.Read(frameMat))
                         continue;
-                    filter.Apply(frameMat);
+                    //filter.Apply(frameMat);
                     Cv2.ImShow("press any key to quit", frameMat);
                     if(Cv2.WaitKey(33)>0)
                     {
