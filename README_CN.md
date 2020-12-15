@@ -1,13 +1,14 @@
 # Zack.OpenCVSharp.Ext
-It is an extension library of OpenCvSharp. It provides ResourceTracker, which can facilitate the resources management of Mat and other unmanaged resources. It also provide a class, named np, which is a managed version of Numpy.
+这是OpenCvSharp的一个扩展库。这里面的ResourceTracker类用来简化Mat等资源的管理。它也提供了名字叫做np的类，他是Numpy的.NET原生托管版本。
 
-NuGet Package
+NuGet 包
 
 ```
 Install-Package Zack.OpenCVSharp.Ext
 ```
 ## ResourceTracker
-In OpenCVSharp, Mat and MatExpr have unmanaged resources, so they should be disposed be code. However, the code is tedious. Worst of all, every operator, like +,-,* and others, will create new objects, and they should by disposed one by one. The tedious code is as follow.
+在OpenCVSharp中，Mat 和 MatExpr等类有非托管资源，所以他们需要通过代码手动释放。但是，代码非常啰嗦。更糟糕的是，+、-、*等运算符每次都会创建一个新的对象，这些对象都需要释放。啰嗦的代码就像这样的。
+
 ```csharp
 using (Mat mat1 = new Mat(new Size(100, 100), MatType.CV_8UC3))
 using (Mat mat2 = mat1 * 0.8)
@@ -25,11 +26,11 @@ using (Mat mat3 = 255-mat2)
 }
 ```
 
-The class ResourceTracker is used for managing OpenCV resources, like Mat, MatExpr, etc.
-* T(). The method T() of ResourceTracker is used for add OpenCV objects to the tracking records. After Dispose() of ResourceTracker is called, all the resoruces kept by ResourceTracker will be disposed. The method T() can take one object and an array of objects.
-* NewMat(). The method NewMat() is a combination of T(new Mat(...)) 
+ResourceTracker类用来管理OpenCV的资源，例如 Mat、 MatExpr等。
+* T(). ResourceTracker类的T()方法用于把OpenCV对象加入跟踪记录。当ResourceTracker类的 Dispose()方法被调用后，ResourceTracker跟踪的所有资源都会被释放。T()方法可以跟踪一个对象或者一个对象数组。
+* NewMat(). 这个方法是T(new Mat(...)) 的一个简化。
 
-Sample code:
+例子代码：
 
 ```csharp
 using (ResourceTracker t = new ResourceTracker())
@@ -47,13 +48,11 @@ using (ResourceTracker t = new ResourceTracker())
 }
 ```
 
-Because every operator, like +,-,* and others, will create a new object, so they should be wrapped by T(). For example: t.T(255 - t.T(picMat * 0.8))
+因为+、-、*等运算符每次都会创建一个新的对象，这些对象都需要释放，他们可以使用T()进行包裹。例如：t.T(255 - t.T(picMat * 0.8))
 
 ## np
-The class np is like the np of NumPy in python.
-Because the grammar of python is different from that of C#, I don't the .NET binding version of Numpy is a good idea. Furthermore, the ported packages, like Numpy.NET, cannot take advantages of C# grammer sugar, like lambda.
-
-Therefore, I created the managed version of np, which provies zeros_like, array, where. I'm a newbie to the OpenCV field, and I didn't do much research in Numpy, so I didn't implement most methods of Numpy. I will be appreciated if any one can contribute more methods to np.cs.
+np类就像Python里的np一样。因为Python的语法和C#的不一样，我认为Numpy的.NET绑定版不是最好的方案。而且，Numpy.NET之类的移植包无法充分利用C#的lambda之类的语法糖。
+因此，我创建了一个np的托管版本，它提供了zeros_like, array, where等方法。我是Numpy领域的新人，我在Numpy领域也还没深入研究，因此我没有实现Numpy中的大部分方法。如果您原因贡献更多代码到np类，我会非常开心。
 
 ## GreenScreenRemovalDemo
-The project GreenScreenRemovalDemo is a practical case. It can remove the green screen of a video or the images from the webcamera.
+GreenScreenRemovalDemo项目是一个实际的案例，它用来移除视频或者摄像头中的绿幕。

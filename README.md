@@ -1,5 +1,7 @@
+[ÖÐÎÄ°æÎÄµµ(Chinese version)](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/blob/main/README_CN.md)
+
 # Zack.OpenCVSharp.Ext
-It is an extension library of OpenCvSharp. It provides ResourceTracker, which can facilitate the resources management of Mat and other unmanaged resources. It also provide a class, named np, which is a managed version of Numpy.
+It is an extension library of OpenCvSharp. It provides ResourceTracker, which can facilitate the resources management of Mat and other unmanaged resources. It also provide a class, named np, which is a .NET native and  managed version of Numpy.
 
 NuGet Package
 
@@ -50,10 +52,10 @@ using (ResourceTracker t = new ResourceTracker())
 Because every operator, like +,-,* and others, will create a new object, so they should be wrapped by T(). For example: t.T(255 - t.T(picMat * 0.8))
 
 ## np
-The class np is like the np of NumPy in python.
-Because the grammar of python is different from that of C#, I don't the .NET binding version of Numpy is a good idea. Furthermore, the ported packages, like Numpy.NET, cannot take advantages of C# grammer sugar, like lambda.
+The class np is like the np of NumPy in Python.
+Because the syntax of Python is different from that of C#, I don't the .NET binding version of Numpy is a good idea. Furthermore, the ported packages, like Numpy.NET, cannot take advantages of C# syntax sugar, like lambda.
 
-Therefore, I created the managed version of np, which provies zeros_like, array, where. I'm a newbie to the OpenCV field, and I didn't do much research in Numpy, so I didn't implement most methods of Numpy. I will be appreciated if any one can contribute more methods to np.cs.
+Therefore, I created the managed version of np, which provies zeros_like, array, where. I'm a newbie to the Numpy field, and I didn't do much research in Numpy, so I didn't implement most methods of Numpy. I will be appreciated if any one can contribute more methods to np.cs.
 
 ## GreenScreenRemovalDemo
 The project GreenScreenRemovalDemo is a practical case. It can remove the green screen of a video or the images from the webcamera.
