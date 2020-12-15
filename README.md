@@ -55,6 +55,5 @@ Because the grammar of python is different from that of C#, I don't the .NET bin
 
 Therefore, I created the managed version of np, which provies zeros_like, array, where. I'm a newbie to the OpenCV field, and I didn't do much research in Numpy, so I didn't implement most methods of Numpy. I will be appreciated if any one can contribute more methods to np.cs.
 
-
-
-
+## GreenScreenRemovalDemo
+The project GreenScreenRemovalDemo is a practical case. It can remove the green screen of a video or the images from the webcamera.
