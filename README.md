@@ -59,3 +59,10 @@ Therefore, I created the managed version of np, which provies zeros_like, array,
 
 ## GreenScreenRemovalDemo
 The project GreenScreenRemovalDemo is a practical case. It can remove the green screen of a video or the images from the webcamera.
+
+Binaries of GreenScreenRemovalDemo:
+* Windows(X86 and X64): [Download From GitHub](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/win32x86.zip)   [Download From OneDrive](https://1drv.ms/u/s!ArtUX5uRoj_cmWWM1xf0CfVMx4FI?e=YupHDl)
+* MacOS (osx.10.15-x64):[Download From GitHub](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/osx.10.15-x64.zip)   [Download From OneDrive](https://1drv.ms/u/s!ArtUX5uRoj_cmWIlLKUw77KVx0r7?e=zfdafg)
+* centos7-x64:[Download From GitHub](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/centos7-x64.zip)   [Download From OneDrive](https://1drv.ms/u/s!ArtUX5uRoj_cmWMwztai5lT-ag8n?e=rTiejq)
+* ubuntu.16.04-x64:[Download From GitHub](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/ubuntu.16.04-x64.zip)   [Download From OneDrive](https://1drv.ms/u/s!ArtUX5uRoj_cmWbBCY5TRpcwjb_y?e=xWBBkx)
+* debian.10-amd64:[Download From GitHub](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/debian.10-amd64.zip)   [Download From OneDrive](https://1drv.ms/u/s!ArtUX5uRoj_cmWQcrpCEMT3cNjBz?e=0fg5XV)
