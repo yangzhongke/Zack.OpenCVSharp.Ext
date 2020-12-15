@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon>toolchar.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -14,7 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OpenCvSharp4.runtime.multi-arch" Version="4.3.0.20200527" />
+    <PackageReference Include="OpenCvSharp4.runtime.centos7-x64" Version="4.0.0.20190129" />
+    <PackageReference Include="OpenCvSharp4.runtime.debian.10-amd64" Version="4.3.0.20200424" />
+    <PackageReference Include="OpenCvSharp4.runtime.osx.10.15-x64" Version="4.5.0.20201013" />
+    <PackageReference Include="OpenCvSharp4.runtime.raspbian.stretch" Version="4.3.0.20200527" />
+    <PackageReference Include="OpenCvSharp4.runtime.ubuntu.18.04-x64" Version="4.5.0.20201013" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.5.0.20201013" />
   </ItemGroup>
 
   <ItemGroup>
