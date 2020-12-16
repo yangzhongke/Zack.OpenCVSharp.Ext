@@ -27,7 +27,7 @@ using (Mat mat3 = 255-mat2)
 ```
 
 ResourceTracker类用来管理OpenCV的资源，例如 Mat、 MatExpr等。
-* T(). ResourceTracker类的T()方法用于把OpenCV对象加入跟踪记录。当ResourceTracker类的 Dispose()方法被调用后，ResourceTracker跟踪的所有资源都会被释放。T()方法可以跟踪一个对象或者一个对象数组。
+* T(). ResourceTracker类的T()方法用于把OpenCV对象加入跟踪记录，然后再把对象返回，所以T()方法就相当于一个待释放资源的包裹器。当ResourceTracker类的 Dispose()方法被调用后，ResourceTracker跟踪的所有资源都会被释放。T()方法可以跟踪一个对象或者一个对象数组。
 * NewMat(). 这个方法是T(new Mat(...)) 的一个简化。
 
 例子代码：

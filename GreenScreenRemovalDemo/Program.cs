@@ -32,16 +32,18 @@ namespace GreenScreenRemovalDemo
                 filter.GreenScale = 35;
                 if(videoCapture.CaptureType== CaptureType.Camera)
                 {
-                    videoCapture.FrameWidth = 1024;
-                    videoCapture.FrameHeight = 768;
+                    videoCapture.FrameWidth = 800;
+                    videoCapture.FrameHeight = 600;
                     videoCapture.FourCC = "MJPG";
                 }                
                 while (true)
                 {
                     if (!videoCapture.Read(frameMat))
                         continue;
-                    //filter.Apply(frameMat);
+                    filter.Apply(frameMat);
                     Cv2.ImShow("press any key to quit", frameMat);
+                    //WaitKey() not only reads key from user input,
+                    //but also prevents UI from frozen.
                     if(Cv2.WaitKey(33)>0)
                     {
                         break;

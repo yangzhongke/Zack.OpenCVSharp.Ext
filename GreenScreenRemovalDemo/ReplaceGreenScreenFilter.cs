@@ -86,7 +86,8 @@ namespace GreenScreenRemovalDemo
                     byte blue = pData->Item0;
                     byte green = pData->Item1;
                     byte red = pData->Item2;
-                    byte max = Math.Max(red, Math.Max(blue, green));
+                    byte max1 = blue > green ? blue : green;
+                    byte max = max1>red?max1:red;
                     //if this pixel is some green, render the pixel with the same position on matMask as black
                     if (green == max && green > this._greenScale)
                     {
@@ -121,8 +122,6 @@ namespace GreenScreenRemovalDemo
                 //thickness: -1 means filling the inner space 
                 matMaskForeground.DrawContours(contoursExternalForeground, -1, new Scalar(255),
                     thickness: -1);
-                var kernel = Cv2.GetStructuringElement(MorphShapes.Rect, new Size(3, 3));
-                // Cv2.MorphologyEx(matMaskForeground, matMaskForeground, MorphTypes.Close, kernel,iterations:3);
 
                 //matInternalHollow is the inner Hollow parts of body part.
                 var matInternalHollow = t.NewMat(srcSize, MatType.CV_8UC1, new Scalar(0));
