@@ -58,8 +58,8 @@ npÀà¾ÍÏñPythonÀïµÄnpÒ»Ñù¡£ÒòÎªPythonµÄÓï·¨ºÍC#µÄ²»Ò»Ñù£¬ÎÒÈÏÎªNumpyµÄ.NET°ó¶¨°æ²
 GreenScreenRemovalDemoÏîÄ¿ÊÇÒ»¸öÊµ¼ÊµÄ°¸Àı£¬ËüÓÃÀ´ÒÆ³ıÊÓÆµ»òÕßÉãÏñÍ·ÖĞµÄÂÌÄ»¡£
 
 GreenScreenRemovalDemoµÄ¶ş½øÖÆ¿ÉÖ´ĞĞ³ÌĞò:
-* Windows(X86 and X64): [´Ó GitHubÏÂÔØ](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/win32x86.zip) ||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWWM1xf0CfVMx4FI?e=YupHDl)
-* MacOS (osx.10.15-x64):[´Ó GitHubÏÂÔØ](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/osx.10.15-x64.zip) ||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWIlLKUw77KVx0r7?e=zfdafg)
-* centos7-x64:[´Ó GitHubÏÂÔØ](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/centos7-x64.zip) ||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWMwztai5lT-ag8n?e=rTiejq)
-* ubuntu.16.04-x64:[´Ó GitHubÏÂÔØ](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/ubuntu.16.04-x64.zip) ||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWbBCY5TRpcwjb_y?e=xWBBkx)
-* debian.10-amd64:[´Ó GitHubÏÂÔØ](https://github.com/yangzhongke/Zack.OpenCVSharp.Ext/raw/main/GreenScreenRemovalDemo/Binaries/debian.10-amd64.zip) ||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWQcrpCEMT3cNjBz?e=0fg5XV)
+* Windows(X86 and X64): [´Ó °Ù¶ÈÍøÅÌÏÂÔØ](https://pan.baidu.com/s/1mRs4etacjO-jb1b7iH1R3Q)  £¨ÌáÈ¡Âë£º6cu7£©||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWWM1xf0CfVMx4FI?e=YupHDl)
+* MacOS (osx.10.15-x64):[´Ó °Ù¶ÈÍøÅÌÏÂÔØ](https://pan.baidu.com/s/1bSxtpFxnfXwl1VfhpGO-rQ) £¨ÌáÈ¡Âë£ºw7ki£©||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWIlLKUw77KVx0r7?e=zfdafg)
+* centos7-x64: [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWMwztai5lT-ag8n?e=rTiejq)
+* ubuntu.16.04-x64: [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWbBCY5TRpcwjb_y?e=xWBBkx)
+* debian.10-amd64:[´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWQcrpCEMT3cNjBz?e=0fg5XV)
