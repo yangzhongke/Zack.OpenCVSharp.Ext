@@ -57,6 +57,8 @@ npÀà¾ÍÏñPythonÀïµÄnpÒ»Ñù¡£ÒòÎªPythonµÄÓï·¨ºÍC#µÄ²»Ò»Ñù£¬ÎÒÈÏÎªNumpyµÄ.NET°ó¶¨°æ²
 ## GreenScreenRemovalDemo
 GreenScreenRemovalDemoÏîÄ¿ÊÇÒ»¸öÊµ¼ÊµÄ°¸Àı£¬ËüÓÃÀ´ÒÆ³ıÊÓÆµ»òÕßÉãÏñÍ·ÖĞµÄÂÌÄ»¡£
 
+¹ØÓÚÕâ¸öÏîÄ¿µÄÎÄÕÂ: [±à³ÌÈ¥³ı±³¾°ÂÌÄ»¿ÙÍ¼£¬»ùÓÚ.NET+OpenCVSharp](https://www.bilibili.com/read/cv8850462)
+
 GreenScreenRemovalDemoµÄ¶ş½øÖÆ¿ÉÖ´ĞĞ³ÌĞò:
 * Windows(X86 and X64): [´Ó °Ù¶ÈÍøÅÌÏÂÔØ](https://pan.baidu.com/s/1mRs4etacjO-jb1b7iH1R3Q)  £¨ÌáÈ¡Âë£º6cu7£©||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWWM1xf0CfVMx4FI?e=YupHDl)
 * MacOS (osx.10.15-x64):[´Ó °Ù¶ÈÍøÅÌÏÂÔØ](https://pan.baidu.com/s/1bSxtpFxnfXwl1VfhpGO-rQ) £¨ÌáÈ¡Âë£ºw7ki£©||  [´Ó OneDriveÏÂÔØ](https://1drv.ms/u/s!ArtUX5uRoj_cmWIlLKUw77KVx0r7?e=zfdafg)

@@ -60,6 +60,8 @@ Therefore, I created the managed version of np, which provies zeros_like, array,
 ## GreenScreenRemovalDemo
 The project GreenScreenRemovalDemo is a practical case. It can remove the green screen of a video or the images from the webcamera.
 
+An article of this project: [Extract portrait and replace background(image matting) by code, using C# .NET and OpenCVSharp](https://www.reddit.com/r/csharp/comments/ker9fx/extract_portrait_and_replace_backgroundimage/)
+
 Binaries of GreenScreenRemovalDemo:
 * Windows(X86 and X64): [Download From OneDrive](https://1drv.ms/u/s!ArtUX5uRoj_cmWWM1xf0CfVMx4FI?e=YupHDl)
 * MacOS (osx.10.15-x64):[Download From OneDrive](https://1drv.ms/u/s!ArtUX5uRoj_cmWIlLKUw77KVx0r7?e=zfdafg)
