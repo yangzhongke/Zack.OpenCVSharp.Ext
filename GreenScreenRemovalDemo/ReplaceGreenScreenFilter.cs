@@ -108,8 +108,11 @@ namespace GreenScreenRemovalDemo
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 Size srcSize = src.Size();
+
+                Mat blurredMat = t.T(np.zeros_like(src));
+                Cv2.GaussianBlur(src, blurredMat, new Size(3, 3), 0, 0, BorderTypes.Constant);
                 Mat matMask = t.NewMat(srcSize, MatType.CV_8UC1, new Scalar(0));
-                RenderGreenScreenMask(src, matMask);
+                RenderGreenScreenMask(blurredMat, matMask);
                 //the area is by integer instead of double, so that it can improve the performance of comparision of areas
                 int minBlockArea = (int)(srcSize.Width * srcSize.Height * this.MinBlockPercent);
                 var contoursExternalForeground = Cv2.FindContoursAsArray(matMask, RetrievalModes.External, ContourApproximationModes.ApproxNone)

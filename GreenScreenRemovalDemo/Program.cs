@@ -7,9 +7,10 @@ namespace GreenScreenRemovalDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Press v key for playing demo video,and Press number key for playing  the specified camera with the index.");
-            var c = Console.ReadKey();
             VideoCapture videoCapture;
+            /*
+            Console.WriteLine("Press v key for playing demo video,and Press number key for playing  the specified camera with the index.");
+            var c = Console.ReadKey();            
             if (c.Key== ConsoleKey.V)
             {
                 videoCapture = new VideoCapture("monster.mp4");
@@ -23,7 +24,9 @@ namespace GreenScreenRemovalDemo
             {
                 Console.WriteLine("Invalid input.");
                 return;
-            }
+            }*/
+           videoCapture = new VideoCapture(@"E:\主同步盘\我的坚果云\读书笔记及我的文章\技术学习笔记\opencvsharp\yzk真人绿幕.mp4");
+            //videoCapture = new VideoCapture(1, VideoCaptureAPIs.DSHOW);
             using (videoCapture)
             using (Mat frameMat = new Mat())
             using (Mat matBg = Cv2.ImRead("bg.png"))
