@@ -11,34 +11,35 @@ def addAlphaChannel(src, alpha):
     #split is used for splitting the channels separately
     return cv2.merge((b,g,r,alpha))
 
-def renderGreenScreenMask(src, matMask):                    
-    rows = src.shape[0]
-    cols = src.shape[1]
-    for x in range(rows):    	
-        for y in range(cols):            
-            blue,green,red = src[x,y]
-            max1 = max(blue,green,red)
-            #if this pixel is some green, render the pixel with the same position on matMask as black
-            if (green == max1 and green > _greenScale):
-                matMask[x, y]=0
-            else:
-                matMask[x, y]=255
+def renderGreenScreenMask(src):
+    #https://codereview.stackexchange.com/questions/184044/processing-an-image-to-extract-green-screen-mask
+    RED, GREEN, BLUE = (2, 1, 0)
+    reds = src[:, :, RED]
+    greens = src[:, :, GREEN]
+    blues = src[:, :, BLUE]
+    mask = (greens < 35) | (reds > greens) | (blues > greens)
+    #astype(np.uint8): https://answers.opencv.org/question/225478/convert-a-2d-numpy-array-to-cv_8uc1-type/
+    mask = np.where(mask, 255, 0).astype(np.uint8)
+    return mask
+    
 
+#https://stackoverflow.com/questions/54069766/overlaying-an-image-over-another-image-both-with-transparent-background-using-op   
 def drawOverlay(bg, overlay):
-    rows = bg.shape[0]
-    cols = bg.shape[1]
-    for x in range(rows):    	
-        for y in range(cols):            
-            blue,green,red,a = overlay[x,y]
-            if(a!=0):
-                bg[x, y]=(blue,green,red)
-            
+    y1, y2 = 0, overlay.shape[0]
+    x1, x2 = 0, overlay.shape[1]
+    alpha_s = overlay[:, :, 3] / 255.0
+    alpha_l = 1.0 - alpha_s
+
+    for c in range(0, 3):
+        bg[y1:y2, x1:x2, c] = (alpha_s * overlay[:, :, c] +
+                                  alpha_l * bg[y1:y2, x1:x2, c])
 
 def apply(src):
     srcSize = (src.shape[0],src.shape[1])
     #遮罩
-    matMask = np.zeros((srcSize[0],srcSize[1], 1), dtype = "uint8")
-    renderGreenScreenMask(src, matMask)
+    #matMask = np.zeros((srcSize[0],srcSize[1], 1), dtype = "uint8")
+    #renderGreenScreenMask(src, matMask)
+    matMask = renderGreenScreenMask(src)
     #最小连续区域面积
     minBlockArea = src.shape[0] * src.shape[1] * _minBlockPercent
     #从matMask中查找连续区域，连续区域的数据在contours中
