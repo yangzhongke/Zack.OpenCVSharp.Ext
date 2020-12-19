@@ -25,7 +25,7 @@ namespace GreenScreenRemovalDemo
                 Console.WriteLine("Invalid input.");
                 return;
             }*/
-           videoCapture = new VideoCapture(@"E:\主同步盘\我的坚果云\读书笔记及我的文章\技术学习笔记\opencvsharp\yzk真人绿幕.mp4");
+           videoCapture = new VideoCapture(@"E:\主同步盘\我的坚果云\读书笔记及我的文章\技术学习笔记\opencvsharp\yzk真人绿幕~1.mp4");
             //videoCapture = new VideoCapture(1, VideoCaptureAPIs.DSHOW);
             using (videoCapture)
             using (Mat frameMat = new Mat())
@@ -42,7 +42,11 @@ namespace GreenScreenRemovalDemo
                 while (true)
                 {
                     if (!videoCapture.Read(frameMat))
+                    {
+                        //maybe it is at the end of the video, so play from the start
+                        videoCapture.PosFrames = 0;
                         continue;
+                    }                        
                     filter.Apply(frameMat);
                     Cv2.ImShow("press any key to quit", frameMat);
                     //WaitKey() not only reads key from user input,

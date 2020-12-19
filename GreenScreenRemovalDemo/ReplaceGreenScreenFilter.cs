@@ -7,7 +7,7 @@ namespace GreenScreenRemovalDemo
 {
     class ReplaceGreenScreenFilter : IDisposable
     {
-        private byte _greenScale = 1;
+        private byte _greenScale = 30;
         public byte GreenScale
         {
             get
@@ -101,6 +101,16 @@ namespace GreenScreenRemovalDemo
             }
         }
 
+        static void BeautyIt(Mat src)
+        {
+            using (ResourceTracker t = new ResourceTracker())
+            {
+                Mat dst = t.NewMat();
+                Cv2.BilateralFilter(src, dst, 15, 35, 35);
+                dst.CopyTo(src);
+            }
+        }
+
         public void Apply(Mat src)
         {
             using (ResourceTracker t = new ResourceTracker())
@@ -109,16 +119,18 @@ namespace GreenScreenRemovalDemo
                 sw.Start();
                 Size srcSize = src.Size();
 
-                Mat blurredMat = t.T(np.zeros_like(src));
-                Cv2.GaussianBlur(src, blurredMat, new Size(3, 3), 0, 0, BorderTypes.Constant);
+                //todo: 只对脸部进行亮肤https://blog.csdn.net/cnbloger/article/details/77949949
+                //https://blog.csdn.net/skyqsdyy/article/details/89467143
+                //todo: 对src进行美颜、瘦脸、亮肤等。只要控制在一帧50ms之内即可。
                 Mat matMask = t.NewMat(srcSize, MatType.CV_8UC1, new Scalar(0));
-                RenderGreenScreenMask(blurredMat, matMask);
+                RenderGreenScreenMask(src, matMask);
                 //the area is by integer instead of double, so that it can improve the performance of comparision of areas
                 int minBlockArea = (int)(srcSize.Width * srcSize.Height * this.MinBlockPercent);
                 var contoursExternalForeground = Cv2.FindContoursAsArray(matMask, RetrievalModes.External, ContourApproximationModes.ApproxNone)
                     .Select(c => new { contour = c, Area = (int)Cv2.ContourArea(c) })
                     .Where(c => c.Area >= minBlockArea)
                     .OrderByDescending(c => c.Area).Take(5).Select(c => c.contour);
+                //contoursExternalForeground = contoursExternalForeground.Select(c=>Cv2.ApproxPolyDP(c,0.5,true));
 
                 //a new Mat used for rendering the selected Contours
                 var matMaskForeground = t.NewMat(srcSize, MatType.CV_8UC1, new Scalar(0));
@@ -130,7 +142,7 @@ namespace GreenScreenRemovalDemo
                 var matInternalHollow = t.NewMat(srcSize, MatType.CV_8UC1, new Scalar(0));
                 Cv2.BitwiseXor(matMaskForeground, matMask, matInternalHollow);
 
-                int minHollowArea = (int)(minBlockArea * 0.01);//the lower size limitation of InternalHollow is less than minBlockArea, because InternalHollows are smaller
+                int minHollowArea = (int)(minBlockArea * 0.5);//the lower size limitation of InternalHollow is less than minBlockArea, because InternalHollows are smaller
                 //find the Contours of Internal Hollow  
                 var contoursInternalHollow = Cv2.FindContoursAsArray(matInternalHollow, RetrievalModes.External, ContourApproximationModes.ApproxNone)
                     .Select(c => new { contour = c, Area = Cv2.ContourArea(c) })
@@ -146,11 +158,13 @@ namespace GreenScreenRemovalDemo
                 //smooth the edge of matMaskForeground
                 Cv2.MorphologyEx(matMaskForeground, matMaskForeground, MorphTypes.Close,
                     element, iterations: 6);
+                Cv2.GaussianBlur(matMaskForeground, matMaskForeground, new Size(3, 3), 0, 0);
 
                 var foreground = t.NewMat(src.Size(), MatType.CV_8UC4, new Scalar(0));
                 ZackCVHelper.AddAlphaChannel(src, foreground, matMaskForeground);
                 //resize the _backgroundImage to the same size of src
                 Cv2.Resize(_backgroundImage, src, src.Size());
+               
                 //draw foreground(people) on the backgroundimage
                 ZackCVHelper.DrawOverlay(src, foreground);
                 Debug.WriteLine($"5:{sw.ElapsedMilliseconds}");

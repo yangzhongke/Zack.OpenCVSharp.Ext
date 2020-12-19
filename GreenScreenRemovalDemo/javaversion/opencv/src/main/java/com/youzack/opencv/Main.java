@@ -20,7 +20,8 @@ public class Main {
 			{
 				if(!videoCapture.read(matFrame))
 				{
-					continue;
+					System.out.println("the end");
+					break;
 				}
 				filter.apply(matFrame);
 				imshow("press any key to quit",matFrame);
