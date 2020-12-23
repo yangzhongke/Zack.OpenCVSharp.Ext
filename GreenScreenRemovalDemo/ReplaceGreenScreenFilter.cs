@@ -1,5 +1,7 @@
 ﻿using OpenCvSharp;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -101,15 +103,26 @@ namespace GreenScreenRemovalDemo
             }
         }
 
-        static void BeautyIt(Mat src)
+        private Dictionary<double, Mat> dictGammaCorrectionLUT = new Dictionary<double, Mat>();
+
+
+        //https://www.cnblogs.com/sdu20112013/p/11597171.html
+        private void GammaCorrect(Mat src,double gamma)
         {
-            using (ResourceTracker t = new ResourceTracker())
+            Mat lookUpTable = dictGammaCorrectionLUT.GetValueOrDefault(gamma);
+            if(lookUpTable==null)
             {
-                Mat dst = t.NewMat();
-                Cv2.BilateralFilter(src, dst, 15, 35, 35);
-                dst.CopyTo(src);
+                lookUpTable = new Mat(new Size(1, 256), MatType.CV_8UC1, new Scalar(0));
+                for (int i = 0; i <= 255; i++)
+                {
+                    double value = Math.Pow(i / 255.0, gamma) * 255.0;
+                    lookUpTable.Set<byte>(0, i, np.clip((byte)value, 0, 255));
+                }
+                dictGammaCorrectionLUT[gamma] = lookUpTable;
             }
+            Cv2.LUT(src, lookUpTable, src);
         }
+
 
         public void Apply(Mat src)
         {
@@ -164,7 +177,8 @@ namespace GreenScreenRemovalDemo
                 ZackCVHelper.AddAlphaChannel(src, foreground, matMaskForeground);
                 //resize the _backgroundImage to the same size of src
                 Cv2.Resize(_backgroundImage, src, src.Size());
-               
+                //GammaCorrect(foreground, 0.8);
+                                
                 //draw foreground(people) on the backgroundimage
                 ZackCVHelper.DrawOverlay(src, foreground);
                 Debug.WriteLine($"5:{sw.ElapsedMilliseconds}");

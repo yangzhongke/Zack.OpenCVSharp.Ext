@@ -50,5 +50,18 @@ namespace OpenCvSharp
                 *pDst = condition(*pSrc) ? *px : *py;
             }
         }
+
+        public static byte clip(byte value,byte min,byte max)
+        {
+            if(value>max)
+            {
+                return max;
+            }
+            if(value<min)
+            {
+                return min;
+            }
+            return value;
+        }
     }
 }

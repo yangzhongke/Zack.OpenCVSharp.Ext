@@ -7,7 +7,7 @@
     <Description>It is an extension library of OpenCvSharp. It provides ResourceTracker, which can facilitate the resources management of Mat and other unmanaged resources. It also provide a class, named np, which is a managed version of Numpy.</Description>
     <PackageProjectUrl>https://github.com/yangzhongke/Zack.OpenCVSharp.Ext</PackageProjectUrl>
     <RepositoryUrl>https://github.com/yangzhongke/Zack.OpenCVSharp.Ext</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

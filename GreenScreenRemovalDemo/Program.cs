@@ -25,8 +25,8 @@ namespace GreenScreenRemovalDemo
                 Console.WriteLine("Invalid input.");
                 return;
             }*/
-           videoCapture = new VideoCapture(@"E:\主同步盘\我的坚果云\读书笔记及我的文章\技术学习笔记\opencvsharp\yzk真人绿幕~1.mp4");
-            //videoCapture = new VideoCapture(1, VideoCaptureAPIs.DSHOW);
+           //videoCapture = new VideoCapture(@"E:\主同步盘\我的坚果云\读书笔记及我的文章\技术学习笔记\opencvsharp\yzk真人绿幕~1.mp4");
+            videoCapture = new VideoCapture(1, VideoCaptureAPIs.DSHOW);
             using (videoCapture)
             using (Mat frameMat = new Mat())
             using (Mat matBg = Cv2.ImRead("bg.png"))
@@ -44,7 +44,10 @@ namespace GreenScreenRemovalDemo
                     if (!videoCapture.Read(frameMat))
                     {
                         //maybe it is at the end of the video, so play from the start
-                        videoCapture.PosFrames = 0;
+                        if(videoCapture.CaptureType== CaptureType.File)
+                        {
+                            videoCapture.PosFrames = 0;
+                        }                        
                         continue;
                     }                        
                     filter.Apply(frameMat);
