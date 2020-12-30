@@ -7,6 +7,10 @@ NuGet 包
 Install-Package Zack.OpenCVSharp.Ext
 ```
 ## ResourceTracker
+
+**ResourceTracker已经贡献到OpenCvSharp4的最新版中，并且更名为ResourceTrackers，详情查看[OpenCvSharp4文档](https://github.com/shimat/opencvsharp) ，[PullRequest说明](https://github.com/shimat/opencvsharp/pull/1110)。这里的ResourceTracker将不会再维护。**
+
+
 在OpenCVSharp中，Mat 和 MatExpr等类有非托管资源，所以他们需要通过代码手动释放。但是，代码非常啰嗦。更糟糕的是，+、-、*等运算符每次都会创建一个新的对象，这些对象都需要释放。啰嗦的代码就像这样的。
 
 ```csharp
