@@ -175,10 +175,13 @@ namespace GreenScreenRemovalDemo
 
                 var foreground = t.NewMat(src.Size(), MatType.CV_8UC4, new Scalar(0));
                 ZackCVHelper.AddAlphaChannel(src, foreground, matMaskForeground);
-                //resize the _backgroundImage to the same size of src
-                Cv2.Resize(_backgroundImage, src, src.Size());
+                if(_backgroundImage!=null)
+                {
+                    //resize the _backgroundImage to the same size of src
+                    Cv2.Resize(_backgroundImage, src, src.Size());
+                }
                 //GammaCorrect(foreground, 0.8);
-                                
+
                 //draw foreground(people) on the backgroundimage
                 ZackCVHelper.DrawOverlay(src, foreground);
                 Debug.WriteLine($"5:{sw.ElapsedMilliseconds}");

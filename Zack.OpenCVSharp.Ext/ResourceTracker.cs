@@ -1,9 +1,12 @@
-﻿using System;
+﻿using OpenCvSharp.Util;
+using System;
 using System.Collections.Generic;
 namespace OpenCvSharp
 {
-    public class ResourceTracker : IDisposable
+    [Obsolete("This class has been moved into OpenCVSharp as a part of OpenCVSharp, please use the  ResourcesTracker under the namespace of OpenCvSharp.Util instead. See https://github.com/shimat/opencvsharp/pull/1110")]
+    public class ResourceTracker : ResourcesTracker
     {
+        /*
         private ISet<DisposableObject> trackedObjects = new HashSet<DisposableObject>();
         private object asyncLoc = new object();
 
@@ -65,6 +68,6 @@ namespace OpenCvSharp
         public void Dispose()
         {
             DisposeAll();
-        }
+        }*/
     }
 }
