@@ -10,7 +10,7 @@ Install-Package Zack.OpenCVSharp.Ext
 ```
 ## ResourceTracker
 
-**ResourceTracker has been contributed to the latest version of OpenCvSharp4, and it has been renamed to ResourceTrackers, please see the [document of OpenCvSharp4](https://github.com/shimat/opencvsharp) ，[PullRequest](https://github.com/shimat/opencvsharp/pull/1110). The ResourceTracker here will not be maintained.**
+**ResourceTracker has been contributed to the latest version of OpenCvSharp4, and it has been renamed to ResourcesTracker, please see the [document of OpenCvSharp4](https://github.com/shimat/opencvsharp) ，[PullRequest](https://github.com/shimat/opencvsharp/pull/1110). The ResourceTracker here will not be maintained.**
 
 In OpenCVSharp, Mat and MatExpr have unmanaged resources, so they should be disposed be code. However, the code is verbose. Worst of all, every operator, like +,-,* and others, will create new objects, and they should by disposed one by one. The verbose code is as follow.
 ```csharp
